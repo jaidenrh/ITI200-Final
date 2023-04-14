@@ -13,7 +13,13 @@ html {
 }
 
 h2 {
+  padding-top: 20px;
   color: #c1c1c1;
+  text-align: center;
+}
+
+form {
+  text-align: center;
 }
 
 h3 {
