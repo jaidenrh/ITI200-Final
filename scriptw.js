@@ -9,7 +9,7 @@ var currUser = document.querySelector('.username');
 currUser.append(username);
 
 var wheelValues = [
-  { number: 00, color: 'green' },
+  { number: 37, color: 'green' },
   { number: 27, color: 'red' },
   { number: 10, color: 'black' },
   { number: 25, color: 'red' },
@@ -59,7 +59,11 @@ function spinRoulette(winningNumber) {
   document.getElementById('roulette-wheel').style.transform = 'rotate(' + spinDegrees + 'deg)';
 
   setTimeout(function() {
-    var resultText = winningNumber + ' (' + getWinningColor(winningNumber) + ')';
+    if(winningNumber != 37) {
+      var resultText = winningNumber + ' (' + getWinningColor(winningNumber) + ')';
+    } else {
+      var resultText = '00' + ' (' + getWinningColor(winningNumber) + ')';
+    }
     document.getElementById('result').innerHTML = resultText;
     document.getElementById('result').className = getWinningColor(winningNumber);
     // Reset the wheel after 5 seconds
