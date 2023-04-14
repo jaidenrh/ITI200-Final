@@ -18,8 +18,8 @@ h3 {
 
 p {
   color: #c1c1c1;
-  padding-left: 75px;
-  width: 500px;
+  font-size: 25px;
+  padding: 5px;
 }
 
 .money {
@@ -34,11 +34,35 @@ p {
   font-size: 25px
 }
 
-#wheelImage {
+#dog {
+  position: relative;
+}
+
+#dogpic {
+  height: 80px;
+  position: absolute;
+  top: 14px;
+  left: 304px;
+  z-index: 9999;
+}
+
+#roulette-wheel {
+  /*
   position: absolute;
   height: 500px;
   width: 500px;
-  top: 50px;
+  transition: transform 3s ease-out;
+  */
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: #333;
+  position: relative;
+  overflow: hidden;
+  transition: transform 3s ease-out;
+  transform-origin: center;
+  transform: none;
+  top: 80px;
   left: 80px;
 }
 
@@ -46,17 +70,20 @@ p {
   position: relative;
 }
 
-#my-form {
-  position: absolute;
-  height: 500px;
-  width: 600px;
-  top: 70px;
-  right: 40px;
-}
-
-#betting {
+#res {
   position: relative;
 }
+
+#result {
+  position: absolute;
+  top: 600px;
+  left: 283px;
+  background: #FFF9E6;
+}
+
+
+
+
 
 #bottom-bar {
       position: absolute;
@@ -68,3 +95,7 @@ p {
       text-align: center;
       padding: 20px;
 }
+
+.red { color: red; }
+.black { color: black; }
+.green { color: green; }

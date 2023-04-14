@@ -3,6 +3,10 @@
   display: none;
 }
 
+body {
+  background-color: transparent !important;
+}
+
 label {
   color: #c1c1c1;
 }
@@ -13,22 +17,31 @@ html {
 }
 
 h2 {
-  padding-top: 20px;
+  padding: 20px;
   color: #c1c1c1;
   text-align: center;
 }
 
 form {
   text-align: center;
-}
-
-h3 {
-  color: #c1c1c1;
-  padding-left: 50px;
+  padding-bottom: 20px;
 }
 
 p {
   color: #c1c1c1;
   padding-left: 75px;
   width: 500px;
+  background: transparent;
+  text-align: center;
+}
+
+.password-box {
+  background: #333;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
 }

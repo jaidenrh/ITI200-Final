@@ -8,54 +8,90 @@ console.log('Username:', username);
 var currUser = document.querySelector('.username');
 currUser.append(username);
 
-const form = document.getElementById('my-form');
-const submitButton = document.getElementById('submit-button');
+var wheelValues = [
+  { number: 00, color: 'green' },
+  { number: 27, color: 'red' },
+  { number: 10, color: 'black' },
+  { number: 25, color: 'red' },
+  { number: 29, color: 'black' },
+  { number: 12, color: 'red' },
+  { number: 8, color: 'black' },
+  { number: 19, color: 'red' },
+  { number: 31, color: 'black' },
+  { number: 18, color: 'red' },
+  { number: 6, color: 'black' },
+  { number: 21, color: 'red' },
+  { number: 33, color: 'black' },
+  { number: 16, color: 'red' },
+  { number: 4, color: 'black' },
+  { number: 23, color: 'red' },
+  { number: 35, color: 'black' },
+  { number: 14, color: 'red' },
+  { number: 2, color: 'black' },
+  { number: 0, color: 'green'},
+  { number: 28, color: 'black' },
+  { number: 9, color: 'red' },
+  { number: 26, color: 'black' },
+  { number: 30, color: 'red' },
+  { number: 11, color: 'black' },
+  { number: 7, color: 'red' },
+  { number: 20, color: 'black' },
+  { number: 32, color: 'red' },
+  { number: 17, color: 'black' },
+  { number: 5, color: 'red' },
+  { number: 22, color: 'black' },
+  { number: 34, color: 'red' },
+  { number: 15, color: 'black' },
+  { number: 3, color: 'red' },
+  { number: 24, color: 'black' },
+  { number: 36, color: 'red' },
+  { number: 13, color: 'black' },
+  { number: 1, color: 'red' }
+];
 
-// show or hide the color or number options depending on the selection made in the bet type dropdown
-const betTypeDropdown = document.getElementById('bet-type');
-const colorOptions = document.getElementById('color-options');
-const numberOptions = document.getElementById('number-options');
-const amountToBet = document.getElementById('amount');
+function spinRoulette(winningNumber) {
+  document.getElementById('roulette-wheel').style.transform = 'rotate(0deg)';
+  var spinDegrees = calculateSpinDegrees(winningNumber);
 
-betTypeDropdown.addEventListener('change', () => {
-  if (betTypeDropdown.value === 'color') {
-    colorOptions.style.display = 'block';
-    numberOptions.style.display = 'none';
-  } else if (betTypeDropdown.value === 'number') {
-    colorOptions.style.display = 'none';
-    numberOptions.style.display = 'block';
-  } else {
-    colorOptions.style.display = 'none';
-    numberOptions.style.display = 'none';
-  }
-  submitButton.disabled = true;
-});
+  // Subtract the degree value of the starting position (which is 0 for 00 at the top)
+  spinDegrees -= 1440;
 
-// enable the submit button if all required fields have inputs
-[betTypeDropdown, colorOptions, numberOptions, amountToBet].forEach((dropdown) => {
-  const inputs = dropdown.querySelectorAll("input, select");
-  inputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      if (betTypeDropdown.value && inputs[0].value && amountToBet.value) {
-        submitButton.disabled = false;
-      } else {
-        submitButton.disabled = true;
-      }
-    });
+  document.getElementById('roulette-wheel').style.transform = 'rotate(' + spinDegrees + 'deg)';
+
+  setTimeout(function() {
+    var resultText = winningNumber + ' (' + getWinningColor(winningNumber) + ')';
+    document.getElementById('result').innerHTML = resultText;
+    document.getElementById('result').className = getWinningColor(winningNumber);
+    // Reset the wheel after 5 seconds
+    setTimeout(function() {
+      document.getElementById('roulette-wheel').style.transform = 'rotate(0deg)';
+    }, 5000);
+  }, 3000);
+}
+
+
+function calculateSpinDegrees(inputNumber) {
+  var index = wheelValues.findIndex(function(value) {
+    return value.number == inputNumber;
   });
-});
+  if (index === -1) {
+    console.log('Error: Invalid input number');
+    return;
+  }
+  var degreesPerSegment = 360 / wheelValues.length;
+  var angle = 360 - (index * degreesPerSegment) - (degreesPerSegment / 2);
+  angle += degreesPerSegment / 2; // subtract half the degrees per segment value
+  return angle;
+}
 
-// submit the form using AJAX
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); // prevent the default form submission behavior
 
-  const formData = new FormData(form);
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'submit-form.php'); // replace with the URL of the PHP script that will handle the form submission
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      alert(xhr.responseText); // show the response from the server
+
+
+
+function getWinningColor(winningNumber) {
+  for (var i = 0; i < wheelValues.length; i++) {
+    if (wheelValues[i].number === winningNumber) {
+      return wheelValues[i].color;
     }
-  };
-  xhr.send(formData);
-});
+  }
+}
