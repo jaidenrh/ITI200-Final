@@ -1,0 +1,47 @@
+html {
+  background-image: url('backdrop.jpg');
+  background-size: 30%;
+}
+
+h1 {
+  color: #c1c1c1;
+}
+
+label {
+  color: #c1c1c1;
+}
+
+h3 {
+  color: #c1c1c1;
+  padding-left: 50px;
+}
+
+p {
+  color: #c1c1c1;
+  padding-left: 75px;
+  width: 500px;
+}
+
+#wheelImage {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  top: 50px;
+  left: 80px;
+}
+
+#wheel {
+  position: relative;
+}
+
+#my-form {
+  position: absolute;
+  height: 500px;
+  width: 600px;
+  top: 70px;
+  right: 40px;
+}
+
+#betting {
+  position: relative;
+}

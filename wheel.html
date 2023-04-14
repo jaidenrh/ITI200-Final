@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Roulette Wheel</title>
+    <link rel="stylesheet" href="stylew.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+    <body>
+
+    <div id="wheel">
+      <img id="wheelImage" src="rouletteWheel.png">
+    </div>
+
+    <div id="betting">
+      <form id="my-form">
+        <label for="amount">Amount to Bet:</label>
+        <input type="text" id="amount" name="amount" required><br><br>
+        
+        <label for="bet-type">Bet Type:</label>
+        <select id="bet-type" name="bet-type" required>
+          <option value="">--Please select an option--</option>
+          <option value="color">Color</option>
+          <option value="number">Number</option>
+        </select><br><br>
+
+        <div id="color-options" style="display: none;">
+          <label for="color">Color:</label>
+          <select id="color" name="color" required>
+            <option value="">--Please select an option--</option>
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+          </select><br><br>
+        </div>
+
+        <div id="number-options" style="display: none;">
+          <label for="number">Number:</label>
+          <input type="text" id="number" name="number" required><br><br>
+        </div>
+
+        <input type="submit" id="submit-button" value="Submit" disabled>
+      </form>
+
+
+    </div>
+
+
+    <script src="scriptw.js"></script>
+  </body>
+</html>

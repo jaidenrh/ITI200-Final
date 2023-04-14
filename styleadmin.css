@@ -1,0 +1,28 @@
+/* Hide all elements by default */
+.hidden {
+  display: none;
+}
+
+label {
+  color: #c1c1c1;
+}
+
+html {
+  background-image: url('backdrop.jpg');
+  background-size: 30%;
+}
+
+h2 {
+  color: #c1c1c1;
+}
+
+h3 {
+  color: #c1c1c1;
+  padding-left: 50px;
+}
+
+p {
+  color: #c1c1c1;
+  padding-left: 75px;
+  width: 500px;
+}
