@@ -2,8 +2,11 @@
 var urlParams = new URLSearchParams(window.location.search);
 var username = urlParams.get('username');
 
+
 // Use the username variable in your code
 console.log('Username:', username);
+var currUser = document.querySelector('.username');
+currUser.append(username);
 
 const form = document.getElementById('my-form');
 const submitButton = document.getElementById('submit-button');
