@@ -5,6 +5,8 @@
     <title>Admin Controls</title>
     <link rel="stylesheet" href="styleadmin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="password-box">
@@ -17,7 +19,12 @@
     </div>
     
     <div class="content hidden">
-      <p>Testing Box</p>
+      <p>Admin Page</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="spin-button" class="btn btn-primary me-md-2" type="button">Spin</button>
+        <button id="give-money-button" class="btn btn-secondary" type="button">Give money to all users</button>
+
+      </div>
     </div>
     
     <script src="scriptadmin.js"></script>
