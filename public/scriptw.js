@@ -1,4 +1,5 @@
 // Get the username parameter from the URL
+const socket = new WebSocket('ws://localhost:8080');
 var urlParams = new URLSearchParams(window.location.search);
 var username = urlParams.get('username');
 
@@ -48,7 +49,11 @@ var wheelValues = [
   { number: 13, color: 'black' },
   { number: 1, color: 'red' }
 ];
-
+socket.addEventListener('message', function(event) {
+  const data = JSON.parse(event.data);
+  const winningNumber = data.number;
+  spinRoulette(winningNumber);
+});
 function spinRoulette(winningNumber) {
   document.getElementById('roulette-wheel').style.transform = 'rotate(0deg)';
   var spinDegrees = calculateSpinDegrees(winningNumber);

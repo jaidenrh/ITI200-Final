@@ -24,3 +24,29 @@ form.addEventListener("submit", function(event) {
     alert("Incorrect password!");
   }
 });
+
+
+function spin() {
+  let number = Math.floor(Math.random() * 38);
+  socket.send(JSON.stringify({ number }));
+}
+
+document.getElementById("spin-button").addEventListener("click", function() {
+  spin();
+});
+
+
+function giveMoneyToAllUsers() {
+  let amount = 100; 
+  
+  fetch("/give-money-to-all-users", {
+    method: "POST",
+    body: JSON.stringify({ amount }),
+    headers: { "Content-Type": "application/json" }
+  });
+  
+}
+
+document.getElementById("give-money-button").addEventListener("click", function() {
+  giveMoneyToAllUsers();
+});
