@@ -3,9 +3,14 @@ const path = require('path');
 const WebSocket = require('ws');
 const app = express();
 
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'main.html'));
+  });
+app.get('/roulette', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'wheel.html'));
   });
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));

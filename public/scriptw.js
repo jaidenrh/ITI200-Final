@@ -1,13 +1,20 @@
-// Get the username parameter from the URL
-const socket = new WebSocket('ws://localhost:8080');
 var urlParams = new URLSearchParams(window.location.search);
 var username = urlParams.get('username');
+console.log('Username:', username);
+
+$(document).ready(function() {
+  $('#currUser').append(username);
+});
+
+
+// Get the username parameter from the URL
+const socket = new WebSocket('ws://10.0.0.250:8080');
+
 
 
 // Use the username variable in your code
-console.log('Username:', username);
-var currUser = document.querySelector('.username');
-currUser.append(username);
+
+
 
 var wheelValues = [
   { number: 37, color: 'green' },
@@ -49,11 +56,21 @@ var wheelValues = [
   { number: 13, color: 'black' },
   { number: 1, color: 'red' }
 ];
+
 socket.addEventListener('message', function(event) {
-  const data = JSON.parse(event.data);
-  const winningNumber = data.number;
-  spinRoulette(winningNumber);
+  event.data.text().then(function(text) {
+    try {
+      const data = JSON.parse(text);
+      const winningNumber = data.number;
+      spinRoulette(winningNumber);
+    } catch (e) {
+      console.error(e);
+    }
+  });
 });
+
+
+
 function spinRoulette(winningNumber) {
   document.getElementById('roulette-wheel').style.transform = 'rotate(0deg)';
   var spinDegrees = calculateSpinDegrees(winningNumber);

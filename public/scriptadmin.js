@@ -1,5 +1,5 @@
 // Password for accessing the admin page
-var password = "Homk0487!";
+var ssefiesifisef = "Homk0487!";
 
 // Get the password input and the content div
 var passwordInput = document.getElementById("password");
@@ -8,6 +8,9 @@ var contentDiv = document.querySelector(".content");
 // Hide the content div by default
 contentDiv.classList.add("hidden");
 
+// Define the socket variable in a higher scope
+var socket;
+
 // Add a submit event listener to the form
 var form = document.querySelector("form");
 form.addEventListener("submit", function(event) {
@@ -15,10 +18,14 @@ form.addEventListener("submit", function(event) {
   var enteredPassword = passwordInput.value;
   
   // Check if the entered password is correct
-  if (enteredPassword === password) {
+  if (enteredPassword === ssefiesifisef) {
     // If correct, show the content div and hide the password box
     contentDiv.classList.remove("hidden");
     document.querySelector(".password-box").classList.add("hidden");
+    
+    // Connect to the server and store the socket object
+    socket = new WebSocket("ws://10.0.0.250:8080");
+    
   } else {
     // If incorrect, show an error message
     alert("Incorrect password!");
@@ -28,6 +35,7 @@ form.addEventListener("submit", function(event) {
 
 function spin() {
   let number = Math.floor(Math.random() * 38);
+  console.log(number);
   socket.send(JSON.stringify({ number }));
 }
 

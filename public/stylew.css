@@ -3,39 +3,46 @@ html {
   background-size: 30%;
 }
 
+body {
+  background-color: transparent;
+}
+
 h1 {
   color: #c1c1c1;
+  background-color: transparent;
 }
 
 label {
   color: #c1c1c1;
+  background-color: transparent;
 }
 
 h3 {
   color: #c1c1c1;
   padding-left: 50px;
+  background-color: transparent;
 }
 
 p {
   color: #c1c1c1;
   font-size: 25px;
   padding: 5px;
+  background-color: transparent;
 }
 
 .money {
   color: #c1c1c1;
-  padding-left: 100px;
   font-size: 25px
 }
 
 .username {
   color: #c1c1c1;
-  padding-right: 100px;
   font-size: 25px
 }
 
 #dog {
   position: relative;
+  background: transparent;
 }
 
 #dogpic {
@@ -56,7 +63,7 @@ p {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: #333;
+  background: transparent;
   position: relative;
   overflow: hidden;
   transition: transform 3s ease-out;
@@ -68,10 +75,12 @@ p {
 
 #wheel {
   position: relative;
+  background-color: transparent;
+  height: 0px;
 }
 
 #res {
-  position: relative;
+  background-color: transparent;
 }
 
 #result {
@@ -81,19 +90,12 @@ p {
   background: #FFF9E6;
 }
 
-
-
-
-
-#bottom-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .red { color: red; }

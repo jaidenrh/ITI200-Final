@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>Roulette Wheel</title>
     <link rel="stylesheet" href="stylew.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="hotdog.png">
   </head>
     <body>
+
 
       <div id="res">
         <p id="result">NULL</p>
@@ -16,18 +20,30 @@
         <img id="dogpic" src="hotdog.png">
       </div>
 
-    <div id="wheel">
-      <img id="roulette-wheel" src="rouletteWheel.png">
-    </div>
+      <div id="wheel">
+        <img id="roulette-wheel" src="rouletteWheel.png">
+      </div>
 
     
-
-
-
-    <div id="bottom-bar">
-     <p1 id="bottom" class="username">Username:                       </p1><p1 id="bottom" class="money" padding-left="100px"> Money: </p1> 
-    </div>
-
     <script src="scriptw.js"></script>
+
+        <footer class="py-2 bg-dark">
+          <div class="container px-4">
+            <div class="row">
+              <div class="col text-center">
+                <p class="m-0 text-white" id="currUser">
+                  Username:
+                </p>
+              </div>
+              <div class="col text-center">
+                <p id="currMoney" class="m-0 text-white">
+                  Money:
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
   </body>
 </html>

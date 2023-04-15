@@ -3,7 +3,7 @@ var savedUsername = localStorage.getItem('username');
 
 // If a username is found, redirect to wheel.html with the saved username
 if (savedUsername) {
-  window.location.href = 'wheel.html?username=' + encodeURIComponent(savedUsername);
+  window.location.href = '/roulette?username=' + encodeURIComponent(savedUsername);
 }
 
 // If no saved username is found, display the login form
@@ -17,5 +17,5 @@ form.addEventListener('submit', function(event) {
   event.preventDefault(); // prevent form submission
   var username = document.getElementById('username').value;
   localStorage.setItem('username', username);
-  window.location.href = 'wheel.html?username=' + encodeURIComponent(username);
+  window.location.href = '/roulette?username=' + encodeURIComponent(username);
 });
