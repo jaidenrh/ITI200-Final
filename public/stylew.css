@@ -75,6 +75,7 @@ p {
   transform: none;
   top: 80px;
   left: 80px;
+  z-index: -1;
 }
 
 #wheel {
@@ -83,16 +84,19 @@ p {
   height: 0px;
 }
 
-#res {
-  background-color: transparent;
-}
 
 #result {
-  position: absolute;
-  top: 600px;
-  left: 283px;
-  background: #FFF9E6;
 }
+
+#result1 {
+  background-color: #FFF9E6;
+  border-radius: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
 
 footer {
   position: fixed;
