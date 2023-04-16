@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>Roulette Wheel</title>
-    <link rel="stylesheet" href="stylew.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="stylew.css">
     <link rel="shortcut icon" type="image/x-icon" href="hotdog.png">
   </head>
-    <body>
+
+  <body class="bg-transparent">
 
 
       <div id="res">
@@ -24,26 +26,83 @@
         <img id="roulette-wheel" src="https://jrhawkinfinal.s3.amazonaws.com/rouletteWheel.png">
       </div>
 
+      <div class="container bg-transparent" style="padding-top: 200px;">
+        <div class="row justify-content-center bg-transparent">
+          <div class="col-md-4 bg-transparent" ></div>
+          <div class="col-md-3 bg-transparent text-center" >
+            <p>Current Bet</p>
+            <p id="currBet"></p>
+            <br><br>
+            
+         <!--   
+            <p>
+              <span style="text-decoration: underline;">Last 10 Numbers</span>
+              <br> 1 Red
+              <br> 00 Green
+            </p>
+          -->
+
+          </div>
+          <div class="col-md-2 bg-transparent" >
+            <form class="bg-transparent">
+              <div class="mb-3 bg-transparent">
+                <label for="amount1" class="form-label">Amount to bet</label>
+                <input type="number" class="form-control" id="amount1" name="amount1">
+              </div>
+              <div class="mb-3 bg-transparent">
+                <label for="color" class="form-label">Color to bet on</label>
+                <select class="form-select" id="color" name="color">
+                  <option value="">Select a color</option>
+                  <option value="red">Red</option>
+                  <option value="black">Black</option>
+                  <option value="green">Green</option>
+                </select>
+              </div>
+              <div class="mb-3 bg-transparent">
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-2 bg-transparent">
+            <form>
+              <div class="mb-3 bg-transparent">
+                <label for="amount2" class="form-label">Amount to bet</label>
+                <input type="number" class="form-control" id="amount2" name="amount2">
+              </div>
+              <div class="mb-3 bg-transparent">
+                <label for="number" class="form-label">Number to bet on</label>
+                <input type="number" class="form-control" id="number" name="number" min="0" max="37">
+              </div>
+              <div class="mb-3 bg-transparent">
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
     
     <script src="scriptw.js"></script>
 
-        <footer class="py-2 bg-dark">
-          <div class="container px-4">
-            <div class="row">
-              <div class="col text-center">
-                <p class="m-0 text-white" id="currUser">
-                  Username:
-                </p>
-              </div>
-              <div class="col text-center">
-                <p id="currMoney" class="m-0 text-white">
-                  Money:
-                </p>
-              </div>
-            </div>
+    <footer class="py-2 bg-dark">
+      <div class="container px-4">
+        <div class="row">
+          <div class="col text-center">
+            <p class="m-0 text-white" id="currUser">
+              Username:
+            </p>
           </div>
-        </footer>
+          <div class="col text-center">
+            <p id="currMoney" class="m-0 text-white">
+              Money:
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
 
   </body>
+
 </html>
