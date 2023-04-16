@@ -17,44 +17,44 @@ const socket = new WebSocket('ws://10.0.0.250:8080');
 
 
 var wheelValues = [
-  { number: 37, color: 'green' },
-  { number: 27, color: 'red' },
-  { number: 10, color: 'black' },
-  { number: 25, color: 'red' },
-  { number: 29, color: 'black' },
-  { number: 12, color: 'red' },
-  { number: 8, color: 'black' },
-  { number: 19, color: 'red' },
-  { number: 31, color: 'black' },
-  { number: 18, color: 'red' },
-  { number: 6, color: 'black' },
-  { number: 21, color: 'red' },
-  { number: 33, color: 'black' },
-  { number: 16, color: 'red' },
-  { number: 4, color: 'black' },
-  { number: 23, color: 'red' },
-  { number: 35, color: 'black' },
-  { number: 14, color: 'red' },
-  { number: 2, color: 'black' },
-  { number: 0, color: 'green'},
-  { number: 28, color: 'black' },
-  { number: 9, color: 'red' },
-  { number: 26, color: 'black' },
-  { number: 30, color: 'red' },
-  { number: 11, color: 'black' },
-  { number: 7, color: 'red' },
-  { number: 20, color: 'black' },
-  { number: 32, color: 'red' },
-  { number: 17, color: 'black' },
-  { number: 5, color: 'red' },
-  { number: 22, color: 'black' },
-  { number: 34, color: 'red' },
-  { number: 15, color: 'black' },
-  { number: 3, color: 'red' },
-  { number: 24, color: 'black' },
-  { number: 36, color: 'red' },
-  { number: 13, color: 'black' },
-  { number: 1, color: 'red' }
+  { number: 37, color: 'Green' },
+  { number: 27, color: 'Red' },
+  { number: 10, color: 'Black' },
+  { number: 25, color: 'Red' },
+  { number: 29, color: 'Black' },
+  { number: 12, color: 'Red' },
+  { number: 8, color: 'Black' },
+  { number: 19, color: 'Red' },
+  { number: 31, color: 'Black' },
+  { number: 18, color: 'Red' },
+  { number: 6, color: 'Black' },
+  { number: 21, color: 'Red' },
+  { number: 33, color: 'Black' },
+  { number: 16, color: 'Red' },
+  { number: 4, color: 'Black' },
+  { number: 23, color: 'Red' },
+  { number: 35, color: 'Black' },
+  { number: 14, color: 'Red' },
+  { number: 2, color: 'Black' },
+  { number: 0, color: 'Green'},
+  { number: 28, color: 'Black' },
+  { number: 9, color: 'Red' },
+  { number: 26, color: 'Black' },
+  { number: 30, color: 'Red' },
+  { number: 11, color: 'Black' },
+  { number: 7, color: 'Red' },
+  { number: 20, color: 'Black' },
+  { number: 32, color: 'Red' },
+  { number: 17, color: 'Black' },
+  { number: 5, color: 'Red' },
+  { number: 22, color: 'Black' },
+  { number: 34, color: 'Red' },
+  { number: 15, color: 'Black' },
+  { number: 3, color: 'Red' },
+  { number: 24, color: 'Black' },
+  { number: 36, color: 'Red' },
+  { number: 13, color: 'Black' },
+  { number: 1, color: 'Red' }
 ];
 
 socket.addEventListener('message', function(event) {
@@ -110,14 +110,24 @@ function calculateSpinDegrees(inputNumber) {
   return angle;
 }
 
-
-
-
-
 function getWinningColor(winningNumber) {
   for (var i = 0; i < wheelValues.length; i++) {
     if (wheelValues[i].number === winningNumber) {
+      console.log(wheelValues[i].color);
       return wheelValues[i].color;
+
     }
   }
+}
+
+function makeBetColor() {
+
+}
+
+function makeBetNumber() {
+
+}
+
+function checkBets() {
+
 }
