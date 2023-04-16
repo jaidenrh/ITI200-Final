@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const pool = new Pool({
-    host: 'localhost',
+    host: 'usermoney.cshfpbqb4x3z.us-east-1.rds.amazonaws.com',
     database: 'postgres',
     user: 'postgres',
     password: 'Homk0487!',
