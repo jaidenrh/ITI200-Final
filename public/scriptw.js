@@ -47,6 +47,7 @@ console.log('Username:', username);
 
 function resetBets() {
   $('#currBet').text('NULL');
+  betType = '';
   localStorage.setItem('bet2Amount', 0);
   localStorage.setItem('bet1Amount', 0);
 }
