@@ -240,8 +240,16 @@ function checkBets(winningNumber) {
 
   }
   else if(betType == 'color') {
-    if(localStorage.getItem('bet1Color') == getWinningColor(winningNumber)) {
+    var currWinningColor = getWinningColor(winningNumber);
+
+    if(localStorage.getItem('bet1Color') == currWinningColor) {
+      if(winningColor == 'Green'){
+        winnings = localStorage.getItem('bet1Amount') * 19;
+        addMoney(winnings);
+      }
+      else{
       addMoney(localStorage.getItem('bet1Amount'));
+      }
       console.log("You Won");
       $('.alert-success').text('You won!').show();
       setTimeout(function() {
