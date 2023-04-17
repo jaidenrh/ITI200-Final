@@ -34,9 +34,23 @@ form.addEventListener("submit", function(event) {
 
 
 function spin() {
+  // Get the button element
+  let button = document.getElementById('spin-button');
+
+  // Add the "btn-danger" class to the button
+  button.classList.add('btn-danger');
+
+  // Generate a random number
   let number = Math.floor(Math.random() * 38);
   console.log(number);
+
+  // Send the number to the server using the WebSocket
   socket.send(JSON.stringify({ number }));
+
+  // Remove the "btn-danger" class from the button after 7 seconds
+  setTimeout(function() {
+    button.classList.remove('btn-danger');
+  }, 7000);
 }
 
 function order66() {
