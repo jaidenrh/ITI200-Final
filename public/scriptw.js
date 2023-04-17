@@ -20,7 +20,7 @@ console.log('Username:', username);
     e.preventDefault();
     betType = 'color';
     var betAmount = $('#amount1').val();
-    if (betAmount <= currMoney) {
+    if (betAmount <= currMoney && betAmount > 0) {
       localStorage.setItem('bet1Amount', betAmount);
       localStorage.setItem('bet1Color', $('#color').val());
       $('#currBet').text('$' + localStorage.getItem('bet1Amount') + ' on ' + localStorage.getItem('bet1Color'));
@@ -34,7 +34,7 @@ console.log('Username:', username);
     e.preventDefault();
     betType = 'number';
     var betAmount = $('#amount2').val();
-    if (betAmount <= currMoney) {
+    if (betAmount <= currMoney && betAmount > 0) {
       localStorage.setItem('bet2Amount', betAmount);
       localStorage.setItem('bet2Number', $('#number').val());
       $('#currBet').text('$' + localStorage.getItem('bet2Amount') + ' on ' + localStorage.getItem('bet2Number'));
