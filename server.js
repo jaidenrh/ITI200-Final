@@ -122,6 +122,19 @@ app.post('/all-money', (req, res) => {
     });
 });
 
+app.post('/null-money', (req, res) => {
+    const {amount} = req.body;
+    pool.query('UPDATE UserMoney SET money = $1', [amount], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Error removing money from all accounts');
+        } else {
+            res.status(200).send('Money removed from all accounts');
+        }
+    });
+});
+
+
 
 const wss = new WebSocket.Server({ port: 8080 });
 console.log(wss);

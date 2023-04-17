@@ -59,7 +59,21 @@ function giveMoneyToAllUsers() {
       method: 'POST',
       data: {amount: 500},
       success: function(data) {
-        console.log("Added money...");
+        console.log("Adding money...");
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
+}
+
+function takeMoneyFromAllUsers() {
+      $.ajax({
+      url: '/null-money',
+      method: 'POST',
+      data: {amount: 0},
+      success: function(data) {
+        console.log("Removing money...");
       },
       error: function(jqXHR, textStatus, errorThrown) {
         console.log('Error:', textStatus, errorThrown);
@@ -69,4 +83,8 @@ function giveMoneyToAllUsers() {
 
 document.getElementById("give-money-button").addEventListener("click", function() {
   giveMoneyToAllUsers();
+});
+
+document.getElementById("take-money-button").addEventListener("click", function() {
+  takeMoneyFromAllUsers();
 });
