@@ -112,7 +112,7 @@ app.post('/add-money', (req, res) => {
 
 
 const wss = new WebSocket.Server({ port: 8080 });
-
+console.log(wss);
 wss.on('connection', function connection(ws) {
   console.log('Client connected');
 
