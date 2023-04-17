@@ -74,6 +74,41 @@ app.post('/get-money', function(req, res) {
   });
 });
 
+app.post('/save-user', (req, res) => {
+    const {username, money} = req.body;
+    pool.query('INSERT INTO UserMoney (username, money) VALUES ($1, $2)', [username, money], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Error saving user information to the database');
+        } else {
+            res.status(200).send('User information saved to the database');
+        }
+    });
+});
+
+app.post('/remove-money', (req, res) => {
+    const {username, amount} = req.body;
+    pool.query('UPDATE UserMoney SET money = money - $1 WHERE username = $2', [amount, username], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Error removing money from user account');
+        } else {
+            res.status(200).send('Money removed from user account');
+        }
+    });
+});
+
+app.post('/add-money', (req, res) => {
+    const {username, amount} = req.body;
+    pool.query('UPDATE UserMoney SET money = money + $1 WHERE username = $2', [amount, username], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Error removing money from user account');
+        } else {
+            res.status(200).send('Money removed from user account');
+        }
+    });
+});
 
 
 const wss = new WebSocket.Server({ port: 8080 });

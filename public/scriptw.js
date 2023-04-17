@@ -2,6 +2,7 @@ var urlParams = new URLSearchParams(window.location.search);
 var username = localStorage.getItem('username');
 var betType = '';
 var currMoney;
+var winnings;
 console.log('Username:', username);
 
 
@@ -10,19 +11,7 @@ console.log('Username:', username);
   $(document).ready(function() {
   $('#currUser').append(username);
   if (username) {
-    $.ajax({
-      url: '/get-money',
-      method: 'POST',
-      data: {username: username},
-      success: function(data) {
-        $('#currMoney').text('Money: ' + data.money);
-        currMoney = parseFloat(data.money);
-        console.log(currMoney);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log('Error:', textStatus, errorThrown);
-      }
-    });
+    getMoney();
     }
   });
 
@@ -174,9 +163,59 @@ function getWinningColor(winningNumber) {
   }
 }
 
+function getMoney() {
+  $.ajax({
+      url: '/get-money',
+      method: 'POST',
+      data: {username: username},
+      success: function(data) {
+        $('#currMoney').text('Money: ' + data.money);
+        currMoney = parseFloat(data.money);
+        console.log(currMoney);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
+}
+
+function removeMoney(amount) {
+  $.ajax({
+      url: '/remove-money',
+      method: 'POST',
+      data: {username: username,
+             amount: amount
+            },
+      success: function(data) {
+        getMoney();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
+}
+
+function addMoney(amount) {
+  $.ajax({
+      url: '/add-money',
+      method: 'POST',
+      data: {username: username,
+             amount: amount
+            },
+      success: function(data) {
+        getMoney();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
+
+}
+
 function checkBets(winningNumber) {
   if(betType == 'color') {
     if(localStorage.getItem('bet1Color') == getWinningColor(winningNumber)) {
+      addMoney(localStorage.getItem('bet1Amount'));
       console.log("You Won");
       $('.alert-success').text('You won!').show();
       setTimeout(function() {
@@ -185,6 +224,7 @@ function checkBets(winningNumber) {
     }
     else{
       console.log("You Lost");
+      removeMoney(localStorage.getItem('bet1Amount'));
       $('.alert-danger').text('L!').show();
       setTimeout(function() {
         $('.alert-danger').hide();
@@ -193,6 +233,8 @@ function checkBets(winningNumber) {
   }
   else if(betType == 'number') {
     if(localStorage.getItem('bet2Number') == winningNumber) {
+      winnings = localStorage.getItem('bet1Amount') * 35;
+      addMoney(winnings);
       console.log("You Won");
       $('.alert-success').text('You won!').show();
       setTimeout(function() {
@@ -201,6 +243,7 @@ function checkBets(winningNumber) {
     }
     else{
       console.log("You Lost");
+      removeMoney(localStorage.getItem('bet2Amount'));
       $('.alert-danger').text('L!').show();
       setTimeout(function() {
         $('.alert-danger').hide();
