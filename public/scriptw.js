@@ -233,7 +233,7 @@ function checkBets(winningNumber) {
   }
   else if(betType == 'number') {
     if(localStorage.getItem('bet2Number') == winningNumber) {
-      winnings = localStorage.getItem('bet1Amount') * 35;
+      winnings = localStorage.getItem('bet2Amount') * 35;
       addMoney(winnings);
       console.log("You Won");
       $('.alert-success').text('You won!').show();
