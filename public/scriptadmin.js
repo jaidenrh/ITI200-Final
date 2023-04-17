@@ -50,7 +50,7 @@ function spin() {
   // Remove the "btn-danger" class from the button after 7 seconds
   setTimeout(function() {
     button.classList.remove('btn-danger');
-  }, 7000);
+  }, 8000);
 }
 
 function order66() {
