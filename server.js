@@ -17,7 +17,7 @@ const pool = new Pool({
     port: 5432,
 });
 
-app.get('/main', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'main.html'));
 });
 
