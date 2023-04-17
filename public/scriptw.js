@@ -56,7 +56,7 @@ function resetBets() {
 
 
 // Get the username parameter from the URL
-const socket = new WebSocket("ws:18.212.13.223:8080");
+const socket = new WebSocket("ws:3.89.123.187:8080");
 
 
 
