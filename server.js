@@ -110,6 +110,18 @@ app.post('/add-money', (req, res) => {
     });
 });
 
+app.post('/all-money', (req, res) => {
+    const {amount} = req.body;
+    pool.query('UPDATE UserMoney SET money = money + $1', [amount], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Error adding money to all accounts');
+        } else {
+            res.status(200).send('Money added to all accounts');
+        }
+    });
+});
+
 
 const wss = new WebSocket.Server({ port: 8080 });
 console.log(wss);

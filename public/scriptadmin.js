@@ -54,14 +54,17 @@ document.getElementById("rick-button").addEventListener("click", function() {
 
 
 function giveMoneyToAllUsers() {
-  let amount = 100; 
-  
-  fetch("/give-money-to-all-users", {
-    method: "POST",
-    body: JSON.stringify({ amount }),
-    headers: { "Content-Type": "application/json" }
-  });
-  
+      $.ajax({
+      url: '/all-money',
+      method: 'POST',
+      data: {amount: 500},
+      success: function(data) {
+        console.log("Added money...");
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
 }
 
 document.getElementById("give-money-button").addEventListener("click", function() {
