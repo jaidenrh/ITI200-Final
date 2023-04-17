@@ -34,6 +34,24 @@ p {
   background-color: transparent;
 }
 
+video {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  justify-content: center;
+  align-content: center;
+}
+
+#player {
+  display: block;
+  position: fixed;
+  z-index: 9999;
+  top: 50px;
+  left: 50px;
+  bottom: 50px;
+  right: 50px;
+}
+
 .money {
   color: #c1c1c1;
   font-size: 25px
@@ -54,7 +72,7 @@ p {
   position: absolute;
   top: 14px;
   left: 304px;
-  z-index: 9998;
+  z-index: 9997;
 }
 
 #roulette-wheel {
@@ -113,7 +131,7 @@ footer {
   right: 10px;
   display: none;
   text-align: center;
-  z-index: 9999;
+  z-index: 9998;
 }
 
 .Red { color: red; }

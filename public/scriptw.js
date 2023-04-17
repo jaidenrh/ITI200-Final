@@ -105,7 +105,12 @@ socket.addEventListener('message', function(event) {
     try {
       const data = JSON.parse(text);
       const winningNumber = data.number;
+      if(winningNumber == 66) {
+        ricky();
+      } 
+    else {
       spinRoulette(winningNumber);
+    }
     } catch (e) {
       console.error(e);
     }
@@ -211,6 +216,19 @@ function addMoney(amount) {
     });
 
 }
+
+function ricky() {
+ $(document).ready(function() {
+  const container = document.getElementById('player');
+  const video = document.getElementById('my-video');
+
+  container.style.display = 'block';
+  video.style.display = 'block';
+
+  video.play();
+});
+}
+
 
 function checkBets(winningNumber) {
   if(betType == 'color') {

@@ -39,8 +39,17 @@ function spin() {
   socket.send(JSON.stringify({ number }));
 }
 
+function order66() {
+  let number = 66;
+  socket.send(JSON.stringify({ number }));
+}
+
 document.getElementById("spin-button").addEventListener("click", function() {
   spin();
+});
+
+document.getElementById("rick-button").addEventListener("click", function() {
+  order66();
 });
 
 
