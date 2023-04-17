@@ -61,6 +61,20 @@ app.post('/check-user', (req, res) => {
     });
 });
 
+app.post('/get-money', function(req, res) {
+  var username = req.body.username;
+  var sql = "SELECT money FROM UserMoney WHERE username = $1";
+  pool.query(sql, [username], function(err, result) {
+    if (err) {
+      console.error(err);
+      res.status(500).send({error: 'Error getting user money from the database'});
+    } else {
+      res.status(200).send({ money: result.rows[0].money });
+    }
+  });
+});
+
+
 
 const wss = new WebSocket.Server({ port: 8080 });
 

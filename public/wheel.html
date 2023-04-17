@@ -13,6 +13,13 @@
 
   <body class="bg-transparent">
       
+      <div class="alert alert-success" role="alert">
+      You won!
+      </div>
+
+      <div class="alert alert-danger" role="alert">
+      L!
+      </div>
       
       <div id="dog">
         <img id="dogpic" src="https://jrhawkinfinal.s3.amazonaws.com/hotdog.png">
@@ -27,9 +34,11 @@
 
           <div class="col-md-4 bg-transparent" ></div>
 
-          <div class="col-md-3 bg-transparent text-center" >
-            <p>Current Bet</p>
-            <p id="currBet"></p>
+          <div class="col-md-3 bg-transparent text-center py-0" >
+            <p>Current Bet
+              <br>
+              <span id="currBet">NULL</span>
+            </p>
             <br><br>
             <div id="result1">
               <p id="result">NULL</p>
@@ -44,18 +53,18 @@
 
           </div>
           <div class="col-md-2 bg-transparent" >
-            <form class="bg-transparent">
+            <form id="bet-form1" class="bg-transparent">
               <div class="mb-3 bg-transparent">
                 <label for="amount1" class="form-label">Amount to bet</label>
-                <input type="number" class="form-control" id="amount1" name="amount1">
+                <input type="number" class="form-control" id="amount1" name="amount1" step="0.01">
               </div>
               <div class="mb-3 bg-transparent">
                 <label for="color" class="form-label">Color to bet on</label>
                 <select class="form-select" id="color" name="color">
                   <option value="">Select a color</option>
-                  <option value="red">Red</option>
-                  <option value="black">Black</option>
-                  <option value="green">Green</option>
+                  <option value="Red">Red</option>
+                  <option value="Black">Black</option>
+                  <option value="Green">Green</option>
                 </select>
               </div>
               <div class="mb-3 bg-transparent">
@@ -64,10 +73,10 @@
             </form>
           </div>
           <div class="col-md-2 bg-transparent">
-            <form>
+            <form id="bet-form2">
               <div class="mb-3 bg-transparent">
                 <label for="amount2" class="form-label">Amount to bet</label>
-                <input type="number" class="form-control" id="amount2" name="amount2">
+                <input type="number" class="form-control" id="amount2" name="amount2" step="0.01">
               </div>
               <div class="mb-3 bg-transparent">
                 <label for="number" class="form-label">Number to bet on</label>
@@ -92,12 +101,12 @@
         <div class="row">
           <div class="col text-center">
             <p class="m-0 text-white" id="currUser">
-              Username:
+              User:
             </p>
           </div>
           <div class="col text-center">
             <p id="currMoney" class="m-0 text-white">
-              Money:
+              Money: 
             </p>
           </div>
         </div>

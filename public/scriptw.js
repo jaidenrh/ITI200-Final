@@ -1,10 +1,64 @@
 var urlParams = new URLSearchParams(window.location.search);
-var username = urlParams.get('username');
+var username = localStorage.getItem('username');
+var betType = '';
+var currMoney;
 console.log('Username:', username);
 
-$(document).ready(function() {
+
+  
+
+  $(document).ready(function() {
   $('#currUser').append(username);
+  if (username) {
+    $.ajax({
+      url: '/get-money',
+      method: 'POST',
+      data: {username: username},
+      success: function(data) {
+        $('#currMoney').text('Money: ' + data.money);
+        currMoney = parseFloat(data.money);
+        console.log(currMoney);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error:', textStatus, errorThrown);
+      }
+    });
+    }
+  });
+
+ $(document).ready(function() {
+  $('#bet-form1').submit(function(e) {
+    e.preventDefault();
+    betType = 'color';
+    var betAmount = $('#amount1').val();
+    if (betAmount <= currMoney) {
+      localStorage.setItem('bet1Amount', betAmount);
+      localStorage.setItem('bet1Color', $('#color').val());
+      $('#currBet').text('$' + localStorage.getItem('bet1Amount') + ' on ' + localStorage.getItem('bet1Color'));
+      document.getElementById("bet-form1").reset();
+    } else {
+      alert("Not enough shekels bozo.");
+    }
+  });
+
+  $('#bet-form2').submit(function(e) {
+    e.preventDefault();
+    betType = 'number';
+    var betAmount = $('#amount2').val();
+    if (betAmount <= currMoney) {
+      localStorage.setItem('bet2Amount', betAmount);
+      localStorage.setItem('bet2Number', $('#number').val());
+      $('#currBet').text('$' + localStorage.getItem('bet2Amount') + ' on ' + localStorage.getItem('bet2Number'));
+      document.getElementById("bet-form2").reset();
+    } else {
+      alert("Not enough shekels bozo.");
+    }
+  });
 });
+
+
+
+
 
 
 // Get the username parameter from the URL
@@ -88,6 +142,7 @@ function spinRoulette(winningNumber) {
     }
     document.getElementById('result').innerHTML = resultText;
     document.getElementById('result').className = getWinningColor(winningNumber);
+    checkBets(winningNumber);
     // Reset the wheel after 5 seconds
     setTimeout(function() {
       document.getElementById('roulette-wheel').style.transform = 'rotate(0deg)';
@@ -113,21 +168,43 @@ function calculateSpinDegrees(inputNumber) {
 function getWinningColor(winningNumber) {
   for (var i = 0; i < wheelValues.length; i++) {
     if (wheelValues[i].number === winningNumber) {
-      console.log(wheelValues[i].color);
       return wheelValues[i].color;
 
     }
   }
 }
 
-function makeBetColor() {
-
-}
-
-function makeBetNumber() {
-
-}
-
-function checkBets() {
-
+function checkBets(winningNumber) {
+  if(betType == 'color') {
+    if(localStorage.getItem('bet1Color') == getWinningColor(winningNumber)) {
+      console.log("You Won");
+      $('.alert-success').text('You won!').show();
+      setTimeout(function() {
+        $('.alert-success').hide();
+      }, 3000); // hide the alert after 3 seconds
+    }
+    else{
+      console.log("You Lost");
+      $('.alert-danger').text('L!').show();
+      setTimeout(function() {
+        $('.alert-danger').hide();
+      }, 3000); // hide the alert after 3 seconds
+    }
+  }
+  else if(betType == 'number') {
+    if(localStorage.getItem('bet2Number') == winningNumber) {
+      console.log("You Won");
+      $('.alert-success').text('You won!').show();
+      setTimeout(function() {
+        $('.alert-success').hide();
+      }, 3000); // hide the alert after 3 seconds
+    }
+    else{
+      console.log("You Lost");
+      $('.alert-danger').text('L!').show();
+      setTimeout(function() {
+        $('.alert-danger').hide();
+      }, 3000); // hide the alert after 3 seconds
+    }
+  }
 }
