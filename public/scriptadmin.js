@@ -24,7 +24,7 @@ form.addEventListener("submit", function(event) {
     document.querySelector(".password-box").classList.add("hidden");
     
     // Connect to the server and store the socket object
-    socket = new WebSocket("ws://ec2-34-230-43-128.compute-1.amazonaws.com:8080");
+    socket = new WebSocket("ws:34.230.43.128:8080");
     
   } else {
     // If incorrect, show an error message

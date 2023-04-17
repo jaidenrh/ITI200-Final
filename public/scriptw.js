@@ -51,7 +51,7 @@ console.log('Username:', username);
 
 
 // Get the username parameter from the URL
-const socket = new WebSocket('ws://ec2-34-230-43-128.compute-1.amazonaws.com:8080');
+const socket = new WebSocket('ws:34.230.43.128:8080');
 
 
 
