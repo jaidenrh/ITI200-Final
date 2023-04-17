@@ -243,7 +243,7 @@ function checkBets(winningNumber) {
     var currWinningColor = getWinningColor(winningNumber);
 
     if(localStorage.getItem('bet1Color') == currWinningColor) {
-      if(winningColor == 'Green'){
+      if(currWinningColor == 'Green'){
         winnings = localStorage.getItem('bet1Amount') * 19;
         addMoney(winnings);
       }

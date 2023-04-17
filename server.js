@@ -110,6 +110,8 @@ app.post('/add-money', (req, res) => {
     });
 });
 
+
+
 app.post('/all-money', (req, res) => {
     const {amount} = req.body;
     pool.query('UPDATE UserMoney SET money = money + $1', [amount], (error, results) => {
