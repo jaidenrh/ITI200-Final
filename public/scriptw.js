@@ -45,7 +45,11 @@ console.log('Username:', username);
   });
 });
 
-
+function resetBets() {
+  $('#currBet').text('NULL');
+  localStorage.setItem('bet2Amount', 0);
+  localStorage.setItem('bet1Amount', 0);
+}
 
 
 
@@ -243,6 +247,7 @@ function checkBets(winningNumber) {
     else{
       console.log("You Lost");
       removeMoney(localStorage.getItem('bet1Amount'));
+      resetBets();
       $('.alert-danger').text('L!').show();
       setTimeout(function() {
         $('.alert-danger').hide();
@@ -262,6 +267,7 @@ function checkBets(winningNumber) {
     else{
       console.log("You Lost");
       removeMoney(localStorage.getItem('bet2Amount'));
+      resetBets();
       $('.alert-danger').text('L!').show();
       setTimeout(function() {
         $('.alert-danger').hide();
