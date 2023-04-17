@@ -235,7 +235,10 @@ function ricky() {
 
 
 function checkBets(winningNumber) {
-  if(betType == 'color') {
+  if(betType == '') {
+
+  }
+  else if(betType == 'color') {
     if(localStorage.getItem('bet1Color') == getWinningColor(winningNumber)) {
       addMoney(localStorage.getItem('bet1Amount'));
       console.log("You Won");
